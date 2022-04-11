@@ -191,8 +191,6 @@ int countPass(float *aGrades, int n) {
 int main() {
   float aGrades[MAX];
   int nElem = 0;
-  int res; // you can use this variable to store result of function call if you
-           // wish
 
   nElem = getInputs(
       aGrades,
