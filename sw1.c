@@ -209,7 +209,7 @@ int main() {
 
   printf("Number of Passing: %d\n", countPass(aGrades, nElem));
 
-  printf("Percentage of Passing:%.2f%%\n",
+  printf("Percentage of Passing: %.2f%%\n",
          (float)countPass(aGrades, nElem) / nElem * 100);
 
   return 0;
