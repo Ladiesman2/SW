@@ -105,7 +105,7 @@ the valid grade, hindi lang natatanggal sa array. */
 void displayAll(float aGrades[], int n) {
   int i;
   for (i = 0; i < n; i++)
-    printf("%.1f, ", aGrades[i]);
+    printf("%.1f ", aGrades[i]);
 
   printf("\n");
 }
@@ -155,7 +155,6 @@ int countFail(float *aGrades, int n) {
     if (*(aGrades + i) == 0.0) {
       fail++;
     }
-  // pointer dereferencing???? idk if appropriate dito
 
   return fail;
 }
@@ -182,7 +181,7 @@ int countPass(float *aGrades, int n) {
   int elements;
 
   elements = n;
-  failed = countFail(aGrades, n); // pointer dereferencing????
+  failed = countFail(aGrades, n); 
 
   passed = elements - failed;
 
@@ -197,8 +196,7 @@ int main() {
 
   nElem = getInputs(
       aGrades,
-      MAX); // I HAVE NO IDEA WHY ONE PARAMTER LANG GINAMIT SA GETINPUTS
-  printf("\nNUMBER OF VALID ELEMENTS %d\n", nElem);
+      MAX); 
   displayAll(aGrades, nElem);
 
   /* Provide the appropriate function calls
@@ -206,9 +204,8 @@ int main() {
   printf("Number of 4.0: %d\n", count4(aGrades, nElem));
 
   printf("Number of Failing: %d\n",
-         countFail(aGrades, nElem)); // since pointers lahat na to onward idk if
-                                     // i should make the array "&aGrades"
-
+         countFail(aGrades, nElem)); 
+                                    
   printf("Percentage of Failing: %.2f%%\n",
          (float)countFail(aGrades, nElem) / nElem * 100);
 
