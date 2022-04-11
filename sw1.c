@@ -152,9 +152,10 @@ int countFail(float *aGrades, int n) {
   int fail = 0;
 
   for (i = 0; i < n; i++)
-    if (*(aGrades + i) == 0.0)
-      // pointer dereferencing???? idk if appropriate dito
+    if (*(aGrades + i) == 0.0) {
       fail++;
+    }
+  // pointer dereferencing???? idk if appropriate dito
 
   return fail;
 }
@@ -181,7 +182,7 @@ int countPass(float *aGrades, int n) {
   int elements;
 
   elements = n;
-  failed = countFail(aGrades, MAX); // pointer dereferencing????
+  failed = countFail(aGrades, n); // pointer dereferencing????
 
   passed = elements - failed;
 
