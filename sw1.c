@@ -78,10 +78,10 @@ int getInputs(float aGrades[], int n) {
   int elements = 0;
   float y;
 
-  for (i = 0; i < MAX; i++) {
+  for (i = 0; i < n; i++) {
     scanf("%f", &y);
     if (isValidGrade(y) == 1) {
-      aGrades[i] = y;
+      aGrades[elements] = y;
       elements++;
     }
   }
@@ -105,8 +105,9 @@ the valid grade, hindi lang natatanggal sa array. */
 void displayAll(float aGrades[], int n) {
   int i;
   for (i = 0; i < n; i++)
-    if (isValidGrade(aGrades[i]))
-      printf("%.1f ", aGrades[i]);
+    printf("%.1f, ", aGrades[i]);
+
+  printf("\n");
 }
 
 /* This function returns the number of elements in
@@ -151,9 +152,10 @@ int countFail(float *aGrades, int n) {
   int fail = 0;
 
   for (i = 0; i < n; i++)
-    if (*(aGrades + i) ==
-        0.0) // pointer dereferencing???? idk if appropriate dito
+    if (*(aGrades + i) == 0.0) {
       fail++;
+    }
+  // pointer dereferencing???? idk if appropriate dito
 
   return fail;
 }
@@ -179,8 +181,8 @@ int countPass(float *aGrades, int n) {
   int failed;
   int elements;
 
-  elements = getInputs(aGrades, MAX);
-  failed = countFail(*(aGrades + i), MAX); // pointer dereferencing????
+  elements = n;
+  failed = countFail(aGrades, n); // pointer dereferencing????
 
   passed = elements - failed;
 
@@ -194,22 +196,26 @@ int main() {
            // wish
 
   nElem = getInputs(
-      aGrades); // I HAVE NO IDEA WHY ONE PARAMTER LANG GINAMIT SA GETINPUTS
+      aGrades,
+      MAX); // I HAVE NO IDEA WHY ONE PARAMTER LANG GINAMIT SA GETINPUTS
+  printf("\nNUMBER OF VALID ELEMENTS %d\n", nElem);
   displayAll(aGrades, nElem);
 
   /* Provide the appropriate function calls
      based on the given printf() below: */
-  printf("Number of 4.0: %d\n", getInputs(aGrades, MAX));
+  printf("Number of 4.0: %d\n", count4(aGrades, nElem));
 
   printf("Number of Failing: %d\n",
-         countFail(aGrades, MAX)); // since pointers lahat na to onward idk if i
-                                   // should make the array "&aGrades"
+         countFail(aGrades, nElem)); // since pointers lahat na to onward idk if
+                                     // i should make the array "&aGrades"
 
-  printf("Percentage of Failing: %.2f%%\n", countFail(aGrades, MAX) / 20 * 100);
+  printf("Percentage of Failing: %.2f%%\n",
+         (float)countFail(aGrades, nElem) / nElem * 100);
 
-  printf("Number of Passing: %.2f\n", countPass(aGrades, MAX));
+  printf("Number of Passing: %d\n", countPass(aGrades, nElem));
 
-  printf("Percentage of Passing:%.2f%%\n", countPass(aGrades, MAX) / 20 * 100);
+  printf("Percentage of Passing:%.2f%%\n",
+         (float)countPass(aGrades, nElem) / nElem * 100);
 
   return 0;
 }
